@@ -155,7 +155,7 @@
                 {
                     "name": "negative",
                     "id": "ef30e40c-c4c7-43b4-be19-00144060c5de",
-                    "path": "<Keyboard>/leftArrow",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -166,7 +166,7 @@
                 {
                     "name": "positive",
                     "id": "3bdb2ea5-0cc7-4647-aa1d-712a31430027",
-                    "path": "<Keyboard>/rightArrow",
+                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -221,7 +221,7 @@
                 {
                     "name": "negative",
                     "id": "01241ba8-145d-4144-9af9-997567e21792",
-                    "path": "<Keyboard>/downArrow",
+                    "path": "<Keyboard>/leftCtrl",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -232,7 +232,7 @@
                 {
                     "name": "positive",
                     "id": "184a0dff-9d57-4c86-b60b-fb5fd9546a5e",
-                    "path": "<Keyboard>/upArrow",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -272,6 +272,115 @@
                     "action": "Throttle",
                     "isComposite": false,
                     "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "Camera",
+            "id": "df201927-e4e0-43d8-9fc8-7cc71c6b61b3",
+            "actions": [
+                {
+                    "name": "OrbitHorizontal",
+                    "type": "Value",
+                    "id": "70ebb42c-8dc3-4afd-85ce-59f3e9dbc0a7",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "OrbitVertical",
+                    "type": "Value",
+                    "id": "ef5474e2-c092-4fc0-b9c8-7e3c1337e08f",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "OrbitSnap",
+                    "type": "Button",
+                    "id": "7bb4c182-f2ba-4c9b-ba3b-512433add718",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "keyboard",
+                    "id": "7b07c115-d4c0-4388-bb03-711e83967cde",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OrbitHorizontal",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "e836f87d-2cac-4c62-a9cc-1d2ea496b847",
+                    "path": "<Keyboard>/4",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OrbitHorizontal",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "35d4886c-7edc-4fdd-8446-161eae1b7671",
+                    "path": "<Keyboard>/6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OrbitHorizontal",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "keyboard",
+                    "id": "1e827b3a-faaf-479f-82f6-5e2f8565bc22",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OrbitVertical",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "ae9e4fff-7d12-4c3c-af93-316cdc6f032d",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OrbitVertical",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "b604cc9a-2ed9-48c9-a2e6-ab9e97dddd73",
+                    "path": "<Keyboard>/8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OrbitVertical",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "9ea65342-6034-4e40-afb9-a2d2a235584b",
+                    "path": "<Keyboard>/5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OrbitSnap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
