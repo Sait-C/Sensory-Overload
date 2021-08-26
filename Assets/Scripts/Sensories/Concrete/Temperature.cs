@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Sensories {
-    public class Temperature : MonoBehaviour
+    public class Temperature : SwitchableSensor
     {
     }
 }
