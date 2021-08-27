@@ -5,12 +5,16 @@ using UnityEngine;
 namespace Sensories {
     public abstract class SwitchableSensor : Sensor
     {
-        protected virtual void Open(){
+        public virtual void Open(){
             isOpen = true;
         }
 
-        protected virtual void Close(){
+        public virtual void Close(){
             isOpen = false;
+        }
+
+        protected virtual void Update(){
+            ConsumeThePower(PowerConsumptionAmount);
         }
     }
 }

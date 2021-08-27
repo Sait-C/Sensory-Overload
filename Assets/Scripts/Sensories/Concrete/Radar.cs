@@ -7,12 +7,12 @@ namespace Sensories {
     {
         public GameObject radarMap;
 
-        protected override void Open(){
+        public override void Open(){
             base.Open();
             radarMap.SetActive(true);
         }
 
-        protected override void Close(){
+        public override void Close(){
             base.Close();
             radarMap.SetActive(false);
         }

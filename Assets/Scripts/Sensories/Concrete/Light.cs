@@ -9,6 +9,11 @@ namespace Sensories {
         public Slider slider;
         public UnityEngine.Light light;
 
+        public override void Start(){
+            base.Start();
+            powerConsume = new GradualConsumption();
+        }
+
         public void OnSliderValueChange(){
             SetLevel(slider.value);
             light.intensity = level;

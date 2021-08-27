@@ -8,6 +8,7 @@ namespace Drone {
         //just definitions
         void InitEngine();
         void UpdateEngine(Rigidbody rb, Drone_Inputs input);
+        void SetEnginePower(float power);
     }
 }
 

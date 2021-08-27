@@ -13,10 +13,13 @@ namespace Sensories {
 
         public delegate void LevelAction();
         public event LevelAction OnLevelIsZero;
+        public event LevelAction OnLevelIsNotZero;
         
         public void CheckIfLevelZero(){
             if(sensor.level <= 0){
                 OnLevelIsZero();
+            }else{
+                OnLevelIsNotZero();
             }
         }
     }

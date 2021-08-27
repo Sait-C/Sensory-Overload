@@ -6,14 +6,14 @@ using System;
 [CreateAssetMenu]
 public class ProcessorData : ScriptableObject, ISerializationCallbackReceiver
 {
-    public float InitialValue;
+    public float MaxValue;
 
     [NonSerialized]
     public float RuntimeValue;
 
     public void OnAfterDeserialize()
     {
-        RuntimeValue = InitialValue;
+        RuntimeValue = 0f;
     }
 
     public void OnBeforeSerialize() { }

@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Sensories {
-    public class Sensor
+    public class Sensor : MonoBehaviour 
     {
-       protected bool isOpen { get; set; }
-       protected float PowerConsumptionAmount;
-       protected ProcessorData processorData;
+       public bool isOpen { get; set; }
+       [SerializeField] protected float PowerConsumptionAmount;
+       public ProcessorData processorData;
+       public float speedOfPowerConsumption;
 
-       protected void ConsumeThePower(){
-            if(isOpen){
-                processorData.RuntimeValue -= PowerConsumptionAmount;
+       protected float amountProcess = 0f;
+
+       protected void ConsumeThePower(float amount){
+            if(isOpen && amountProcess <= amount){
+                processorData.RuntimeValue += speedOfPowerConsumption;
+                amountProcess += speedOfPowerConsumption;
+            }else if(!isOpen && amountProcess >= 0f){
+                processorData.RuntimeValue -= speedOfPowerConsumption;
+                amountProcess -= speedOfPowerConsumption;
             }
        }
     }
