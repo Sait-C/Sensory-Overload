@@ -5,6 +5,10 @@ using UnityEngine;
 namespace Sensories {
     public abstract class SwitchableSensor : Sensor
     {
+        public virtual void Start(){
+            Close();
+        }
+
         public virtual void Open(){
             isOpen = true;
         }

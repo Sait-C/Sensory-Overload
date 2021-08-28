@@ -32,6 +32,14 @@ namespace Sensories {
         protected virtual void Close(){
             isOpen = false;
         }
+
+        protected override void ConsumeThePower(float amount){
+            base.ConsumeThePower(amount);
+            if(isOpen && amountProcess > amount){
+                processorData.RuntimeValue -= speedOfPowerConsumption;
+                amountProcess -= speedOfPowerConsumption;
+            }
+        }
     }
 }
 

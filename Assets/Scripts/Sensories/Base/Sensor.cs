@@ -12,11 +12,11 @@ namespace Sensories {
 
        protected float amountProcess = 0f;
 
-       protected void ConsumeThePower(float amount){
-            if(isOpen && amountProcess <= amount){
+       protected virtual void ConsumeThePower(float amount){
+            if(isOpen && amountProcess < amount){
                 processorData.RuntimeValue += speedOfPowerConsumption;
                 amountProcess += speedOfPowerConsumption;
-            }else if(!isOpen && amountProcess >= 0f){
+            }else if(!isOpen && amountProcess > 0f){
                 processorData.RuntimeValue -= speedOfPowerConsumption;
                 amountProcess -= speedOfPowerConsumption;
             }
