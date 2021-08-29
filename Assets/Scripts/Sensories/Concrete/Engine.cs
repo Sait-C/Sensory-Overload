@@ -27,14 +27,14 @@ namespace Sensories {
             }
         }
 
-        protected override void Close(){
+        public override void Close(){
             base.Close();
             foreach(var engine in engines){
                 engine.powerOn = false;
             }
         }
 
-        protected override void Open(){
+        public override void Open(){
             base.Open();
             foreach(var engine in engines){
                 engine.InitEngine();

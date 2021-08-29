@@ -14,6 +14,7 @@ namespace Obstacles {
         public ICheckPhysics checkPhysics;
 
         private bool playerInside = false;
+        protected Collider player;
 
         public virtual void Start(){
             playerInside = false;
@@ -23,14 +24,13 @@ namespace Obstacles {
             var cols = checkPhysics.Check();
             if(cols.Length > 0){
                 foreach(var col in cols){
+                    player = col;
                     //Will it work one time or continually?
                     //You can seperate this logics to another script like Obstacle_Logics.cs
-                    if(update){
-                        if(OnPlayerInside != null)
-                            OnPlayerInside();
-                    }else if(!playerInside){
-                        if(OnPlayerInside != null)
-                            OnPlayerInside();
+                    if(update && OnPlayerInside != null){
+                        OnPlayerInside();
+                    }else if(!playerInside && OnPlayerInside != null){
+                        OnPlayerInside();
                     }
                     
                     playerInside = true;

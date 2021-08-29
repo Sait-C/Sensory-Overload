@@ -4,8 +4,20 @@ using UnityEngine;
 
 namespace Sensories{
     
-    public class Balance : MonoBehaviour
+    public class Balance : SwitchableSensor
     {
+        [SerializeField] GameEvent OnBalanceOpen;
+        [SerializeField] GameEvent OnBalanceClose;
+
+        public override void Open(){
+            base.Open();
+            OnBalanceOpen.Raise();
+        }
+
+        public override void Close(){
+            base.Close();
+            OnBalanceClose.Raise();
+        }
     }
 
 }

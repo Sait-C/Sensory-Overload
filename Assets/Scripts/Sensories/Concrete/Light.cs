@@ -14,10 +14,15 @@ namespace Sensories {
             powerConsume = new GradualConsumption();
         }
 
+        public override void Close(){
+            base.Close();
+            slider.value = 0;
+            SetLevel(slider.value);
+        }
+
         public void OnSliderValueChange(){
             SetLevel(slider.value);
             light.intensity = level;
         }
     }
 }
-

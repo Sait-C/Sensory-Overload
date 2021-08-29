@@ -5,14 +5,14 @@ using UnityEngine;
 namespace Sensories {
     public class Sensor : MonoBehaviour 
     {
-       public bool isOpen { get; set; }
-       [SerializeField] protected float PowerConsumptionAmount;
-       public ProcessorData processorData;
-       public float speedOfPowerConsumption;
+        public bool isOpen { get; set; }
+        [SerializeField] protected float PowerConsumptionAmount;
+        public ProcessorData processorData;
+        public float speedOfPowerConsumption;
 
-       protected float amountProcess = 0f;
+        protected float amountProcess = 0f;
 
-       protected virtual void ConsumeThePower(float amount){
+        protected virtual void ConsumeThePower(float amount){
             if(isOpen && amountProcess < amount){
                 processorData.RuntimeValue += speedOfPowerConsumption;
                 amountProcess += speedOfPowerConsumption;
@@ -20,6 +20,6 @@ namespace Sensories {
                 processorData.RuntimeValue -= speedOfPowerConsumption;
                 amountProcess -= speedOfPowerConsumption;
             }
-       }
+        }
     }
 }

@@ -25,11 +25,11 @@ namespace Sensories {
             ConsumeThePower(amount);
         }
 
-        protected virtual void Open(){
+        public virtual void Open(){
             isOpen = true;
         }
 
-        protected virtual void Close(){
+        public virtual void Close(){
             isOpen = false;
         }
 
