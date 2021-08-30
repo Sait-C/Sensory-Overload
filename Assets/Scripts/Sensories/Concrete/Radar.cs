@@ -16,6 +16,14 @@ namespace Sensories {
             base.Close();
             radarMap.SetActive(false);
         }
+
+        public void OpenClose(){
+            if(isOpen){
+                Close();
+            }else{
+                Open();
+            }
+        }
     }
 }
 

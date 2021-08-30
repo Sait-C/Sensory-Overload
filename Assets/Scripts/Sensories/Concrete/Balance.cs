@@ -18,6 +18,14 @@ namespace Sensories{
             base.Close();
             OnBalanceClose.Raise();
         }
+
+        public void OpenClose(){
+            if(isOpen){
+                Close();
+            }else{
+                Open();
+            }
+        }
     }
 
 }

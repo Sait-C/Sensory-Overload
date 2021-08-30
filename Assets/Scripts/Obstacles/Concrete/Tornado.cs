@@ -17,12 +17,50 @@ namespace Obstacles {
         [SerializeField] AnimationCurve pullForceCurve;
         [SerializeField] float pullForce;
 
+        [Header("Random Movement")]
+        [SerializeField] float stopDistance = 1f;
+        [SerializeField] Transform minimum, maximum;
+        [SerializeField] float movementSpeed = 5f;
+
         private bool force = true;
+
+        private Vector3 randomPosition;
+        private bool targetPosReached = false;
+        private float distanceFromTargetPos = 0f;
 
         void Awake(){
             force = true;
             checkPhysics = new BoxCheck(centerOfTheBox, rotationOfTheBox, halfExtents, whatIsPlayer);
             OnPlayerInside += UpsetBalance;
+            //randomPosition = Random.insideUnitSphere * areaRadius;
+            randomPosition = GetNewRandomPosition();
+        }
+
+        public override void Update(){
+            base.Update();
+            RandomMovement();
+        }
+
+        private void RandomMovement(){
+            distanceFromTargetPos = Vector3.Distance(transform.position, randomPosition);
+            if(targetPosReached){
+                targetPosReached = false;
+                //randomPosition = Random.insideUnitSphere * areaRadius;
+                randomPosition = GetNewRandomPosition();
+            }
+            if(distanceFromTargetPos <= stopDistance){
+                targetPosReached = true;
+            }else{
+                transform.position = Vector3.MoveTowards(transform.position, randomPosition,
+                    Time.deltaTime * movementSpeed);
+            }
+        }
+
+        Vector3 GetNewRandomPosition(){
+            float x = Random.Range(minimum.position.x, maximum.position.x);
+            float z = Random.Range(minimum.position.z, maximum.position.z);
+
+            return new Vector3(x, transform.position.y, z);
         }
 
         void UpsetBalance(){
@@ -44,7 +82,6 @@ namespace Obstacles {
             pullingCenter.position = new Vector3(pullingCenter.position.x, 
                  pullingCenterCurve.Evaluate(((Time.time * 1f) % pullForceCurve.length)), pullingCenter.position.z);
             yield return 1f;
-            StartCoroutine(IncreasePull());
         }
 
         public void OnDrawGizmos(){
