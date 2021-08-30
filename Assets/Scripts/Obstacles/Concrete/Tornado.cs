@@ -28,10 +28,14 @@ namespace Obstacles {
         private bool targetPosReached = false;
         private float distanceFromTargetPos = 0f;
 
+        private bool warningSpawned;
+        private GameObject warning;
+
         void Awake(){
             force = true;
             checkPhysics = new BoxCheck(centerOfTheBox, rotationOfTheBox, halfExtents, whatIsPlayer);
             OnPlayerInside += UpsetBalance;
+            OnPlayerExit += DeleteWarning;
             //randomPosition = Random.insideUnitSphere * areaRadius;
             randomPosition = GetNewRandomPosition();
         }
@@ -39,6 +43,12 @@ namespace Obstacles {
         public override void Update(){
             base.Update();
             RandomMovement();
+        }
+
+        public void DeleteWarning(){
+            if(warning != null)
+                Destroy(warning);
+            warningSpawned = false;
         }
 
         private void RandomMovement(){
@@ -64,6 +74,13 @@ namespace Obstacles {
         }
 
         void UpsetBalance(){
+            if(!force){
+                DeleteWarning();
+                return;
+            }else if(force && !warningSpawned){
+                warning = HUDManager.Instance.CreateWarning(HUDManager.Instance.controlLostSprite);
+                warningSpawned = true;
+            }
             StartCoroutine(IncreasePull());
         }
 

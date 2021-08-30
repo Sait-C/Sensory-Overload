@@ -15,6 +15,8 @@ namespace Obstacles {
         [SerializeField] LevelableSensor[] levelableSensors;
         [SerializeField] SwitchableSensor[] switchableSensors;
 
+
+        private GameObject warning;
         public void Awake(){
             checkPhysics = new SphereCheck(checkPosition, whatIsPlayer, radius);
             OnPlayerInside += BreakSensors;
@@ -22,6 +24,9 @@ namespace Obstacles {
         }
 
         public void BreakSensors(){
+           HUDManager.Instance.Disable();
+           warning = HUDManager.Instance.CreateWarning(HUDManager.Instance.signalAreaSpite);
+
            foreach(var sensor in levelableSensors){
                 sensor.Close();
            }
@@ -32,7 +37,8 @@ namespace Obstacles {
         }
 
         public void BackupSensors(){
-            Debug.Log("Player exit");
+            HUDManager.Instance.Enable();
+            Destroy(warning);
         }
 
         public void OnDrawGizmos(){

@@ -16,11 +16,28 @@ namespace Obstacles {
 
         private float process = 0f;
 
+        private GameObject warning;
+        private bool warningSpawned;
         void Awake(){
             checkPhysics = new SphereCheck(checkPosition, whatIsPlayer, radius);
             OnPlayerInside += IncreaseCpuHeat;
+            OnPlayerInside += CreateWarning;
             OnPlayerExit += DecreaseCpuHeat;
+            OnPlayerExit += DeleteWarning;
             process = 0f;
+        }
+
+        public void CreateWarning(){
+            if(!warningSpawned){
+                warning = HUDManager.Instance.CreateWarning(HUDManager.Instance.radiationSprite);
+                warningSpawned = true;
+            }
+        }
+
+        public void DeleteWarning(){
+            if(warning != null)
+                Destroy(warning);
+            warningSpawned = false;
         }
 
         public void IncreaseCpuHeat(){
